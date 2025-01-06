@@ -108,17 +108,16 @@ public class MessageDAO {
             throw new HttpResponseException(400);
           }
         try {
-            String sql = "UPDATE MESSAGE SET MESSAGE_ID = ?, MESSAGE_TEXT = ?, TIME_POSTED_EPOCH = ? WHERE MESSAGE_ID = ?";
+            String sql = "UPDATE MESSAGE SET message_text = ? WHERE message_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             
-            preparedStatement.setInt(1, newMessage.getMessage_id());
-            preparedStatement.setString(2, newMessage.getMessage_text());
-            preparedStatement.setLong(3, newMessage.getTime_posted_epoch());
-            preparedStatement.setString(4, id);
+            
+            preparedStatement.setString(1, newMessage.getMessage_text());
+            preparedStatement.setString(2, id);
 
             int rs = preparedStatement.executeUpdate();
 
-            if(rs>0) return newMessage;        
+            if(rs>0) return getMessageById(id);        
         
         }catch(SQLException e){
             System.out.println(e.getMessage());
