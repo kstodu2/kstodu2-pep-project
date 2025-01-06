@@ -1,8 +1,5 @@
 package Service;
 import Model.Account;
-
-import java.sql.SQLException;
-
 import DAO.AccountDAO;
 
 public class AccountService {
@@ -18,6 +15,9 @@ public class AccountService {
 
     public Account addAccount(Account account){
         return accountDAO.insertAccount(account);
+    }
+    public Account getAccount(Account account){
+        return accountDAO.getAccount(account);
     }
 
 }
