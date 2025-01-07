@@ -19,6 +19,7 @@ public class MessageDAO {
           }
        
         try{
+            
         String sql = "INSERT INTO MESSAGE(POSTED_BY,MESSAGE_TEXT, TIME_POSTED_EPOCH) VALUES (?,?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
